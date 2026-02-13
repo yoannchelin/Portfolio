@@ -1,4 +1,4 @@
-name: Unzip Upload (FIX)
+name: Unzip Portfolio (flat zip)
 
 on:
   workflow_dispatch:
@@ -15,12 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install rsync + unzip
+      - name: Install unzip + rsync
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y rsync unzip
+          sudo apt-get install -y unzip rsync
 
-      - name: Find zip and extract
+      - name: Unzip flat zip into repo root
         shell: bash
         run: |
           set -euo pipefail
@@ -29,20 +29,14 @@ jobs:
             echo "No zip found at repo root."
             exit 1
           fi
-          echo "Using zip: $ZIP"
 
           rm -rf __tmp
           mkdir -p __tmp
           unzip -q "$ZIP" -d __tmp
 
-          TOP_DIR="$(find __tmp -mindepth 1 -maxdepth 1 -type d | head -n 1 || true)"
-          if [ -n "${TOP_DIR}" ] && [ "$(find __tmp -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')" = "1" ]; then
-            SRC="$TOP_DIR"
-          else
-            SRC="__tmp"
-          fi
+          # Portfolio zip is flat: copy EVERYTHING from __tmp
+          rsync -a --exclude ".git" "__tmp"/ .
 
-          rsync -a --exclude ".git" --exclude ".github" "$SRC"/ .
           rm -rf __tmp
           rm -f "$ZIP"
 
@@ -51,5 +45,5 @@ jobs:
           git config user.name "unzip-bot"
           git config user.email "actions@users.noreply.github.com"
           git add .
-          git commit -m "Unzipped project" || echo "Nothing to commit"
+          git commit -m "Unzipped portfolio" || echo "Nothing to commit"
           git push
