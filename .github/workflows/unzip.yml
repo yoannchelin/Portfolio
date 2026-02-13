@@ -1,0 +1,74 @@
+name: Unzip project
+
+on:
+  workflow_dispatch:
+    inputs:
+      zip_name:
+        description: "Zip filename at repo root (leave blank to auto-detect)"
+        required: false
+        default: ""
+  push:
+    paths:
+      - "*.zip"
+
+permissions:
+  contents: write
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Unzip & merge into repo root
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          ZIP_INPUT="${{ github.event.inputs.zip_name }}"
+          if [ -n "${ZIP_INPUT}" ]; then
+            ZIP="$ZIP_INPUT"
+          else
+            ZIP="$(ls -1 *.zip 2>/dev/null | head -n 1 || true)"
+          fi
+
+          if [ -z "${ZIP}" ] || [ ! -f "${ZIP}" ]; then
+            echo "No zip found at repo root."
+            exit 1
+          fi
+
+          echo "Using zip: $ZIP"
+
+          rm -rf __tmp
+          mkdir -p __tmp
+          unzip -q "$ZIP" -d __tmp
+
+          # If zip contains a single top folder, merge from it
+          TOP_COUNT="$(find __tmp -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')"
+          if [ "$TOP_COUNT" = "1" ]; then
+            SRC="$(find __tmp -mindepth 1 -maxdepth 1 -type d | head -n 1)"
+          else
+            SRC="__tmp"
+          fi
+
+          sudo apt-get update -y
+          sudo apt-get install -y rsync
+
+          # Merge safely (do NOT overwrite unzip workflow)
+          rsync -a \
+            --exclude ".git" \
+            --exclude ".github/workflows/unzip*.yml" \
+            "$SRC"/ .
+
+          rm -rf __tmp
+          rm -f "$ZIP"
+
+      - name: Commit extracted files
+        shell: bash
+        run: |
+          git config user.name "unzip-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add .
+          git commit -m "Unzip project" || echo "Nothing to commit"
+          git push
