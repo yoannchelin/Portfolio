@@ -1,10 +1,11 @@
+// ===== Links config (edit here) =====
 window.PORTFOLIO_LINKS = {
   github: "https://github.com/yoannchelin",
   email: "Yoann.chelin@epitech.eu",
 
   cafeflow: {
     repo: "https://github.com/yoannchelin/cafeflow-",
-    demo: "" // add later
+    demo: "" // add later (e.g. https://cafeflow.yourdomain.com)
   },
 
   jobhunt: {
@@ -12,27 +13,32 @@ window.PORTFOLIO_LINKS = {
     demo: "" // add later
   },
 
-  cv: "assets/Yoann_Chelin_CV.pdf"
+  cv: "./assets/Yoann_Chelin_CV.pdf"
 };
 
-
+// ===== Apply links =====
 (function () {
   const y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
 
   const L = window.PORTFOLIO_LINKS;
 
-  const setHref = (id, url) => {
+  const setHref = (id, url, disableIfEmpty = false) => {
     const el = document.getElementById(id);
     if (!el) return;
-    if (!url) {
-    
+
+    if (disableIfEmpty && (!url || url.trim() === "")) {
       el.setAttribute("href", "#");
+      el.setAttribute("aria-disabled", "true");
       el.style.pointerEvents = "none";
       el.style.opacity = "0.6";
       return;
     }
+
     el.setAttribute("href", url);
+    el.removeAttribute("aria-disabled");
+    el.style.pointerEvents = "";
+    el.style.opacity = "";
   };
 
   setHref("githubLink", L.github);
@@ -40,8 +46,9 @@ window.PORTFOLIO_LINKS = {
   setHref("cvLink", L.cv);
 
   setHref("cafeflowRepo", L.cafeflow.repo);
-  setHref("cafeflowDemo", L.cafeflow.demo);
+  setHref("cafeflowDemo", L.cafeflow.demo, true);
 
   setHref("jobhuntRepo", L.jobhunt.repo);
-  setHref("jobhuntDemo", L.jobhunt.demo);
+  setHref("jobhuntDemo", L.jobhunt.demo, true);
 })();
+
