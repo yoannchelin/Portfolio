@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yoann Chelin — Full‑Stack MERN Engineer</title>
-  <meta name="description" content="Full‑Stack MERN Engineer (React/TypeScript, Node/Express, MongoDB). Open to relocate in Australia. Real‑time ordering + staff dashboard project." />
+  <title>Yoann Chelin — Full-Stack MERN Engineer</title>
+  <meta name="description" content="Full-Stack MERN Engineer (React/TypeScript, Node/Express, MongoDB). Open to relocate in Australia. Real-time ordering + staff dashboard project." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
   <header class="topbar">
     <div class="container topbar__inner">
@@ -22,7 +23,7 @@
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
-        <a class="btn btn--ghost" href="./assets/Yoann_Chelin_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+        <a id="cvLink" class="btn btn--ghost" href="./assets/Yoann_Chelin_CV.pdf" target="_blank" rel="noopener">Download CV</a>
       </nav>
     </div>
   </header>
@@ -31,10 +32,10 @@
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="kicker">Full‑Stack MERN Engineer</p>
-          <h1>React/TypeScript, Node/Express, MongoDB — production‑style apps end‑to‑end.</h1>
+          <p class="kicker">Full-Stack MERN Engineer</p>
+          <h1>React/TypeScript, Node/Express, MongoDB — production-style apps end-to-end.</h1>
           <p class="lead">
-            I build clean APIs, responsive UIs, real‑time features, authentication, CI/CD, and deployable systems.
+            I build clean APIs, responsive UIs, real-time features, authentication, CI/CD, and deployable systems.
             Based in Australia — <strong>open to relocate</strong> — <strong>available immediately</strong>.
           </p>
 
@@ -42,17 +43,17 @@
             <span class="badge">English C1</span>
             <span class="badge">WHV 417</span>
             <span class="badge">Open to contract (3–6m)</span>
-            <span class="badge">Sydney • AU‑wide</span>
+            <span class="badge">Sydney • AU-wide</span>
           </div>
 
           <div class="cta">
             <a class="btn" href="#projects">View projects</a>
-            <a class="btn btn--ghost" href="mailto:Yoann.chelin@epitech.eu">Yoann.chelin@epitech.eu</a>
-            <a class="btn btn--ghost" href="https://github.com/yoannchelin" target="_blank" rel="noopener">GitHub</a>
+            <a id="emailLink" class="btn btn--ghost" href="mailto:Yoann.chelin@epitech.eu">Yoann.chelin@epitech.eu</a>
+            <a id="githubLink" class="btn btn--ghost" href="https://github.com/yoannchelin" target="_blank" rel="noopener">GitHub</a>
           </div>
 
           <p class="micro">
-            Prefer a PDF? <a href="./assets/Yoann_Chelin_CV.pdf" target="_blank" rel="noopener">Download my CV</a>.
+            Prefer a PDF? <a id="cvLink2" href="./assets/Yoann_Chelin_CV.pdf" target="_blank" rel="noopener">Download my CV</a>.
           </p>
         </div>
 
@@ -81,17 +82,17 @@
       <div class="container">
         <div class="section__head">
           <h2>Projects</h2>
-          <p>Two public, production‑style projects (demo + repo). Start with CafeFlow.</p>
+          <p>Two public, production-style projects (demo + repo). Start with CafeFlow.</p>
         </div>
 
         <div class="grid">
           <article class="project card">
             <div class="project__top">
-              <h3>CafeFlow ☕ — Real‑time ordering + staff dashboard</h3>
+              <h3>CafeFlow ☕ — Real-time ordering + staff dashboard</h3>
               <span class="pill">MERN • Realtime</span>
             </div>
             <p>
-              QR‑style ordering (mobile), a live staff queue, admin menu management, and secure auth.
+              QR-style ordering (mobile), a live staff queue, admin menu management, and secure auth.
               Built to show real product workflows and operational UX.
             </p>
             <ul class="bullets">
@@ -101,10 +102,10 @@
               <li>Docker + GitHub Actions CI</li>
             </ul>
             <div class="project__actions">
-              <a class="btn btn--small" href="https://github.com/yoannchelin" target="_blank" rel="noopener">Repo (add link)</a>
-              <a class="btn btn--small btn--ghost" href="#" aria-disabled="true" onclick="return false;">Live demo (add link)</a>
+              <a id="cafeflowRepo" class="btn btn--small" href="https://github.com/yoannchelin/cafeflow-" target="_blank" rel="noopener">Repo</a>
+              <a id="cafeflowDemo" class="btn btn--small btn--ghost" href="#" aria-disabled="true">Live demo</a>
             </div>
-            <p class="hint">Tip: once you deploy, replace the two buttons with real URLs.</p>
+            <p class="hint">Tip: once you deploy, paste the live URL in <code>script.js</code> and the button will activate.</p>
           </article>
 
           <article class="project card">
@@ -113,19 +114,20 @@
               <span class="pill">MERN • Product</span>
             </div>
             <p>
-              A personal application tracker built for high‑volume job hunting: pipeline, reminders, analytics, export.
+              A personal application tracker built for high-volume job hunting: pipeline, reminders, analytics, export.
               This is the perfect second public repo to complement CafeFlow.
             </p>
             <ul class="bullets">
               <li>Kanban pipeline (Applied → Interview → Offer)</li>
-              <li>Follow‑up reminders + notes + links</li>
-              <li>Simple analytics (conversion, time‑to‑interview)</li>
+              <li>Follow-up reminders + notes + links</li>
+              <li>Simple analytics (conversion, time-to-interview)</li>
               <li>CSV export for recruiters / reporting</li>
             </ul>
             <div class="project__actions">
-              <a class="btn btn--small" href="#contact">Build this with me →</a>
-              <a class="btn btn--small btn--ghost" href="#contact">Get the roadmap</a>
+              <a id="jobhuntRepo" class="btn btn--small" href="https://github.com/yoannchelin/Jobhunt" target="_blank" rel="noopener">Repo</a>
+              <a id="jobhuntDemo" class="btn btn--small btn--ghost" href="#" aria-disabled="true">Live demo</a>
             </div>
+            <p class="hint">Tip: after deploy, paste the live URL in <code>script.js</code> to enable the demo button.</p>
           </article>
         </div>
 
@@ -167,13 +169,13 @@
       <div class="container">
         <div class="section__head">
           <h2>Experience</h2>
-          <p>Hands‑on delivery across full‑stack projects, from requirements to production.</p>
+          <p>Hands-on delivery across full-stack projects, from requirements to production.</p>
         </div>
 
         <div class="timeline">
           <div class="timeline__item card">
             <div class="timeline__meta">
-              <strong>Full‑Stack Developer Intern — Ty‑Bugale</strong>
+              <strong>Full-Stack Developer Intern — Ty-Bugale</strong>
               <span>Mar 2025 – Sep 2025</span>
             </div>
             <p>Built React/TypeScript features, Node/Express services, integrated APIs, and deployed with Docker + CI/CD.</p>
@@ -181,10 +183,10 @@
 
           <div class="timeline__item card">
             <div class="timeline__meta">
-              <strong>Full‑Stack Developer Intern — Kaliman Service</strong>
+              <strong>Full-Stack Developer Intern — Kaliman Service</strong>
               <span>Mar 2023 – Sep 2023</span>
             </div>
-            <p>Delivered a MERN web app end‑to‑end and added features for content + eco‑design workflows.</p>
+            <p>Delivered a MERN web app end-to-end and added features for content + eco-design workflows.</p>
           </div>
 
           <div class="timeline__item card">
@@ -192,7 +194,7 @@
               <strong>Software Developer Intern — APC Info Services</strong>
               <span>Sep 2021 – Jan 2022</span>
             </div>
-            <p>Implemented and tested point‑of‑sale features, improved reliability, and collaborated on specs.</p>
+            <p>Implemented and tested point-of-sale features, improved reliability, and collaborated on specs.</p>
           </div>
         </div>
       </div>
@@ -207,8 +209,8 @@
 
         <div class="contact card">
           <div>
-            <p class="contact__line"><strong>Email:</strong> <a href="mailto:Yoann.chelin@epitech.eu">Yoann.chelin@epitech.eu</a></p>
-            <p class="contact__line"><strong>GitHub:</strong> <a href="https://github.com/yoannchelin" target="_blank" rel="noopener">github.com/yoannchelin</a></p>
+            <p class="contact__line"><strong>Email:</strong> <a id="emailLink2" href="mailto:Yoann.chelin@epitech.eu">Yoann.chelin@epitech.eu</a></p>
+            <p class="contact__line"><strong>GitHub:</strong> <a id="githubLink2" href="https://github.com/yoannchelin" target="_blank" rel="noopener">github.com/yoannchelin</a></p>
             <p class="contact__line"><strong>Location:</strong> Sydney, NSW (open to relocate)</p>
           </div>
           <div class="contact__actions">
@@ -227,3 +229,4 @@
   <script src="./script.js"></script>
 </body>
 </html>
+
