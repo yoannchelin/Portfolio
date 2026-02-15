@@ -5,7 +5,7 @@ window.PORTFOLIO_LINKS = {
 
   cafeflow: {
     repo: "https://github.com/yoannchelin/cafeflow-",
-    demo: "" // add later (e.g. https://cafeflow.yourdomain.com)
+    demo: "https://cafeflow-inky.vercel.app"
   },
 
   jobhunt: {
