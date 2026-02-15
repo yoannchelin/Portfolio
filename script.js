@@ -44,6 +44,10 @@ window.PORTFOLIO_LINKS = {
   setHref("githubLink", L.github);
   setHref("emailLink", `mailto:${L.email}`);
   setHref("cvLink", L.cv);
+  setHref("cvLink2", L.cv);
+  setHref("emailLink2", `mailto:${L.email}`);
+  setHref("githubLink2", L.github);
+
 
   setHref("cafeflowRepo", L.cafeflow.repo);
   setHref("cafeflowDemo", L.cafeflow.demo, true);
