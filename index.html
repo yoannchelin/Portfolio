@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yoann Chelin — Full-Stack MERN Engineer</title>
-  <meta name="description" content="Full-Stack MERN Engineer (React/TypeScript, Node/Express, MongoDB). Open to relocate in Australia. Real-time ordering + staff dashboard project." />
+  <title>Yoann Chelin — Full-Stack &amp; AI Engineer</title>
+  <meta name="description" content="Full-Stack Engineer building web apps and applied-AI tooling: React/Next.js/TypeScript, Node &amp; Go, MCP servers, RAG with local LLMs. Open to relocate in Australia." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -32,10 +32,11 @@
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="kicker">Full-Stack MERN Engineer</p>
-          <h1>React/TypeScript, Node/Express, MongoDB — production-style apps end-to-end.</h1>
+          <p class="kicker">Full-Stack &amp; Applied-AI Engineer</p>
+          <h1>Web apps end-to-end — and the AI tooling that makes codebases understandable.</h1>
           <p class="lead">
-            I build clean APIs, responsive UIs, real-time features, authentication, CI/CD, and deployable systems.
+            I ship full-stack products (React/Next.js, Node, MongoDB/Postgres) and build developer tooling
+            on top of LLMs: MCP servers in Go, RAG pipelines, static analysis over real call graphs.
             Based in Australia — <strong>open to relocate</strong> — <strong>available immediately</strong>.
           </p>
 
@@ -61,13 +62,13 @@
           <div class="card card--glow">
             <div class="card__header">
               <h2>What I ship</h2>
-              <p>Fast, readable, and deployable web apps.</p>
+              <p>Fast, readable, and deployable systems.</p>
             </div>
             <ul class="list">
-              <li><strong>Frontend:</strong> React, TypeScript, Vite, responsive UI</li>
-              <li><strong>Backend:</strong> Node.js, Express, REST, auth (JWT)</li>
-              <li><strong>Realtime:</strong> Socket.IO for live dashboards</li>
-              <li><strong>Delivery:</strong> Docker, GitHub Actions CI, prod deploy</li>
+              <li><strong>Product:</strong> React, Next.js 14, TypeScript, Tailwind, responsive UI</li>
+              <li><strong>Backend:</strong> Node/Express, Go, Python/FastAPI, REST, JWT auth</li>
+              <li><strong>Applied AI:</strong> MCP servers, RAG (pgvector), local LLMs via Ollama</li>
+              <li><strong>Delivery:</strong> Docker, GitHub Actions CI, Vercel, Supabase</li>
             </ul>
             <div class="card__footer">
               <a class="link" href="#projects">See featured project →</a>
@@ -82,10 +83,97 @@
       <div class="container">
         <div class="section__head">
           <h2>Projects</h2>
-          <p>Two public, production-style projects (demo + repo). Start with CafeFlow.</p>
+          <p>All public on GitHub. Start with the Git Archaeologist ecosystem — five interoperating agents I designed and built in Go.</p>
         </div>
 
+        <article class="project project--feature card card--glow">
+          <div class="project__top">
+            <h3>Git Archaeologist — a 5-agent ecosystem for understanding legacy code</h3>
+            <span class="pill">Go • MCP • Local LLM</span>
+          </div>
+          <p>
+            LLMs read 200 lines well and 200k-line repos badly. Archaeologist indexes a repository's
+            <strong>call graph</strong>, <strong>vector embeddings</strong> and <strong>git history</strong> into SQLite,
+            then exposes it over the <strong>Model Context Protocol</strong> so any MCP client (Claude, Cursor, Zed)
+            can answer "where is payment handled?" or "what breaks if I rename this?".
+            Four more agents build on that same index. Everything runs on-prem against a local LLM — no code leaves the machine.
+          </p>
+
+          <div class="agents">
+            <a class="agent" id="agentArchaeo" href="https://github.com/yoannchelin/Git-archeologist" target="_blank" rel="noopener">
+              <strong>Git Archaeologist</strong>
+              <span>Hybrid retrieval — vector + lexical + call graph — served over MCP.</span>
+            </a>
+            <a class="agent" id="agentBlast" href="https://github.com/yoannchelin/Blaster" target="_blank" rel="noopener">
+              <strong>Blast Radius</strong>
+              <span>Reverse call-graph impact analysis, 0–100 risk scoring, tests-to-rerun. No LLM, pure SQL + graph.</span>
+            </a>
+            <a class="agent" id="agentHunter" href="https://github.com/yoannchelin/Bug-Hunter" target="_blank" rel="noopener">
+              <strong>Bug Hunter</strong>
+              <span>Fix hotspots, silent error handling (Go AST / TS / Python), bus-factor-1 files, implicit coupling.</span>
+            </a>
+            <a class="agent" id="agentSentinel" href="https://github.com/yoannchelin/Test-sentinel" target="_blank" rel="noopener">
+              <strong>Test Sentinel</strong>
+              <span>Semantic coverage quality: untested critical functions, unexercised error paths, assertion-free tests.</span>
+            </a>
+            <a class="agent" id="agentDep" href="https://github.com/yoannchelin/Dep-sentinel" target="_blank" rel="noopener">
+              <strong>Dep Sentinel</strong>
+              <span>CVEs via govulncheck (OSV fallback), copyleft licence flags, outdated modules — no paid API.</span>
+            </a>
+          </div>
+
+          <ul class="stack" aria-label="Tech stack">
+            <li>Go</li><li>MCP / JSON-RPC 2.0</li><li>SQLite</li><li>Embeddings</li><li>Ollama</li><li>Static analysis (AST)</li>
+          </ul>
+        </article>
+
         <div class="grid">
+          <article class="project card">
+            <div class="project__top">
+              <h3>DocWhisper — AI document Q&amp;A with citations</h3>
+              <span class="pill">Next.js • RAG</span>
+            </div>
+            <p>
+              Upload a PDF, ask questions, get answers that cite the exact passage and page number.
+              A full RAG pipeline running locally — no API keys, no per-token cost.
+            </p>
+            <ul class="bullets">
+              <li>Recursive chunking (500 tokens / 50 overlap) + batch embedding</li>
+              <li>Supabase pgvector with an HNSW index for cosine search</li>
+              <li>Streaming answers from a local <code>llama3.2</code> via Ollama</li>
+              <li>Source citations mapped back to page numbers</li>
+            </ul>
+            <ul class="stack" aria-label="Tech stack">
+              <li>Next.js 14</li><li>TypeScript</li><li>Supabase</li><li>pgvector</li><li>Ollama</li>
+            </ul>
+            <div class="project__actions">
+              <a id="docwhisperRepo" class="btn btn--small" href="https://github.com/yoannchelin/docwhisper" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+
+          <article class="project card">
+            <div class="project__top">
+              <h3>create-saas-app — production-ready SaaS starter</h3>
+              <span class="pill">Next.js • Supabase</span>
+            </div>
+            <p>
+              The boilerplate I stopped rewriting: auth, protected dashboard, persisted AI chat and
+              deployment wired up on day zero.
+            </p>
+            <ul class="bullets">
+              <li>Supabase email/password auth + email confirmation flow</li>
+              <li>Route protection through Next.js middleware</li>
+              <li>AI chat on Groq (Llama 3.3 70B), history persisted in Postgres</li>
+              <li>TypeScript strict, Tailwind, one-click Vercel deploy</li>
+            </ul>
+            <ul class="stack" aria-label="Tech stack">
+              <li>Next.js 14</li><li>TypeScript</li><li>Supabase</li><li>Groq</li><li>Tailwind</li>
+            </ul>
+            <div class="project__actions">
+              <a id="saasRepo" class="btn btn--small" href="https://github.com/yoannchelin/create-saas-app" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </article>
+
           <article class="project card">
             <div class="project__top">
               <h3>CafeFlow ☕ — Real-time ordering + staff dashboard</h3>
@@ -101,38 +189,48 @@
               <li>Menu CRUD + availability toggle</li>
               <li>Docker + GitHub Actions CI</li>
             </ul>
+            <ul class="stack" aria-label="Tech stack">
+              <li>React</li><li>Node/Express</li><li>MongoDB</li><li>Socket.IO</li><li>Docker</li>
+            </ul>
             <div class="project__actions">
               <a id="cafeflowRepo" class="btn btn--small" href="https://github.com/yoannchelin/cafeflow-" target="_blank" rel="noopener">Repo</a>
               <a id="cafeflowDemo" class="btn btn--small btn--ghost" href="https://cafeflow-inky.vercel.app">Live demo</a>
             </div>
-            <p class="hint">Tip: once you deploy, paste the live URL in <code>script.js</code> and the button will activate.</p>
           </article>
 
           <article class="project card">
             <div class="project__top">
-              <h3>JobHunt CRM — Applicant tracker (MVP)</h3>
-              <span class="pill">MERN • Product</span>
+              <h3>Quant Trading Agent — paper-trading platform</h3>
+              <span class="pill">Python • FastAPI</span>
             </div>
             <p>
-              A personal application tracker built for high-volume job hunting: pipeline, reminders, analytics, export.
-              This is the perfect second public repo to complement CafeFlow.
+              A crypto trading system built as a learning platform: strategy engine, persistence,
+              real-time dashboard and mobile alerts. <strong>Paper trading only</strong> — the repo is explicit
+              that it is an educational tool, not investment advice.
             </p>
             <ul class="bullets">
-              <li>Kanban pipeline (Applied → Interview → Offer)</li>
-              <li>Follow-up reminders + notes + links</li>
-              <li>Simple analytics (conversion, time-to-interview)</li>
-              <li>CSV export for recruiters / reporting</li>
+              <li>FastAPI: 12 REST endpoints + WebSocket live feed</li>
+              <li>SQLite persistence (trades, positions, equity curve, events)</li>
+              <li>Responsive PWA dashboard + Telegram notifications</li>
+              <li>Market signals (Fear &amp; Greed, funding rates), 19 pytest unit tests</li>
+            </ul>
+            <ul class="stack" aria-label="Tech stack">
+              <li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>WebSocket</li><li>pytest</li>
             </ul>
             <div class="project__actions">
-              <a id="jobhuntRepo" class="btn btn--small" href="https://github.com/yoannchelin/Jobhunt" target="_blank" rel="noopener">Repo</a>
-              <a id="jobhuntDemo" class="btn btn--small btn--ghost" href="#" aria-disabled="true">Live demo</a>
+              <a id="quantRepo" class="btn btn--small" href="https://github.com/yoannchelin/bot-crypto" target="_blank" rel="noopener">Repo</a>
             </div>
-            <p class="hint">Tip: after deploy, paste the live URL in <code>script.js</code> to enable the demo button.</p>
           </article>
         </div>
 
         <div class="callout card card--soft">
-          <p><strong>Want this to look even stronger?</strong> Add 2 screenshots (order page + staff queue) and a short demo video (30s). I can generate the copy + layout for you.</p>
+          <p>
+            <strong>Also on GitHub:</strong>
+            <a id="jobhuntRepo" href="https://github.com/yoannchelin/Jobhunt" target="_blank" rel="noopener">JobHunt CRM</a>
+            (MERN applicant tracker — kanban pipeline, follow-up reminders, CSV export),
+            plus experiments in Go and agent tooling.
+            <a id="githubLink3" href="https://github.com/yoannchelin" target="_blank" rel="noopener">See all repositories →</a>
+          </p>
         </div>
       </div>
     </section>
@@ -141,25 +239,33 @@
       <div class="container">
         <div class="section__head">
           <h2>Skills</h2>
-          <p>Focused stack for shipping MERN apps with strong delivery practices.</p>
+          <p>Product engineering on the web, plus the systems and AI tooling underneath it.</p>
         </div>
 
         <div class="skills">
           <div class="card">
             <h3>Frontend</h3>
-            <p>React, TypeScript, Vite, HTML/CSS, responsive UI, accessibility basics</p>
+            <p>React, Next.js 14 (App Router), TypeScript, Vite, Tailwind, responsive UI, accessibility basics</p>
           </div>
           <div class="card">
             <h3>Backend</h3>
-            <p>Node.js, Express, REST APIs, auth (JWT/refresh), validation, error handling</p>
+            <p>Node.js, Express, Go, Python/FastAPI, REST APIs, auth (JWT/refresh), validation, error handling</p>
+          </div>
+          <div class="card">
+            <h3>Applied AI</h3>
+            <p>MCP servers (JSON-RPC 2.0), RAG pipelines, embeddings &amp; vector search, local LLMs (Ollama), Groq</p>
           </div>
           <div class="card">
             <h3>Data</h3>
-            <p>MongoDB, Mongoose, data modeling, pagination, indexing basics</p>
+            <p>MongoDB &amp; Mongoose, PostgreSQL/Supabase, pgvector, SQLite, data modeling, pagination, indexing</p>
+          </div>
+          <div class="card">
+            <h3>Code analysis</h3>
+            <p>Go AST parsing, call-graph construction, git-history mining, complexity &amp; risk metrics</p>
           </div>
           <div class="card">
             <h3>Delivery</h3>
-            <p>Docker, GitHub Actions CI, environment configs, production deploy</p>
+            <p>Docker, GitHub Actions CI, Vercel, environment configs, testing (pytest, unit tests), production deploy</p>
           </div>
         </div>
       </div>
@@ -173,6 +279,14 @@
         </div>
 
         <div class="timeline">
+          <div class="timeline__item card">
+            <div class="timeline__meta">
+              <strong>Independent Engineer — Open-source developer tooling</strong>
+              <span>2026</span>
+            </div>
+            <p>Designed and shipped the Git Archaeologist ecosystem (5 interoperating Go agents served over MCP) plus RAG and SaaS projects in Next.js/Supabase. All public on GitHub.</p>
+          </div>
+
           <div class="timeline__item card">
             <div class="timeline__meta">
               <strong>Full-Stack Developer Intern — Ty-Bugale</strong>
@@ -229,4 +343,3 @@
   <script src="./script.js"></script>
 </body>
 </html>
-
